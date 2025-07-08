@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/app.ts",
-    "start": "nodemon ./src/app.ts",
-    "devStart": "nodemon ./src/app.ts"
+    "dev": "ts-node src/index.ts",
+    "start": "nodemon ./src/index.ts",
+    "devStart": "nodemon ./src/index.ts"
   },
   "author": "ovi",
   "license": "ISC",

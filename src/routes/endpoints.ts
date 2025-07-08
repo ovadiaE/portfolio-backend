@@ -1,14 +1,12 @@
 import express from "express";
-import { nextTick } from "process";
-// import getInsights from "../market-insights";
+import getInsights from "../market-insights"
 
 const router = express.Router();
 
-router.get('/job-data', (req, res) => {
-  // console.log('hit endpoint')
-  // const numberOfJobs = getInsights();
-  console.log('endpoint')
-  res.send('hello world');
+router.get('/job-data', async (req, res) => {
+  const numberOfJobs =  await getInsights();
+  console.log("number of jobs: ", numberOfJobs)
+  res.send(numberOfJobs);
 });
 
 export default router;
