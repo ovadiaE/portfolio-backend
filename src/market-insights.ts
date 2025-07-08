@@ -4,7 +4,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const API_URL = 'https://api.apijobs.dev/v1/job/search';
+const API_URL =  process.env.API_URL;
+const API_KEY = process.env.API_JOBS_KEY;
+
 
 const defaultRequestPayload = {
   sort_by: 'published_at',
@@ -16,20 +18,34 @@ const defaultRequestPayload = {
   facets: ['country', 'employment_type']
 };
 
-const getInsights = async (): Promise<number | null> => {
+const getJobcount = async (): Promise<number | null> => {
+
+  //connect to DB 
+
+  // check date string 
+
+  //if it has been greater or equal to 2 days since returned unix time stamp make api call to job count site and store new value in DB 
+  //if it has been less than 2 days since returned unix time stamp get value stored in DB under job_count row
+  //return current value of job_count row
+
+  const count = await requestJobCount();
+
+  return count;
+};
+
+async function requestJobCount():Promise<number> { 
   try {
-    const apiKey = process.env.API_JOBS_KEY;
-    if (!apiKey) {
+    if (!API_KEY) {
       throw new Error('API_JOBS_KEY not set in environment variables');
     }
 
     const response = await axios.post<JobOption>(
-      API_URL,
+      API_URL || '',
       defaultRequestPayload,
       {
         headers: {
           'Content-Type': 'application/json',
-          'apiKey': apiKey
+          'apiKey': API_KEY
         }
       }
     );
@@ -40,8 +56,8 @@ const getInsights = async (): Promise<number | null> => {
 
   } catch (error) {
     console.error('Failed to fetch insights:', error);
-    return null;
+    return 0;
   }
-};
+}
 
-export default getInsights;
+export default getJobcount;

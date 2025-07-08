@@ -2,8 +2,7 @@
 import express, { Request, Response } from "express";
 import routes from './routes/endpoints'
 import dotenv from 'dotenv';
-
-const { Client } = require("pg");
+import { Client } from "pg"; 
     
 dotenv.config();
 const app = express();
@@ -12,7 +11,7 @@ const dbConfig = new Client({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
+  port: 5432,
   database: process.env.DB_NAME,
 });
 
@@ -50,3 +49,5 @@ client
   .catch((err:any) => {
     console.error("Error connecting to PostgreSQL database", err);
   })
+
+  app.listen(3000, () => {console.log(`app listening on http://localhost:3000`)});
