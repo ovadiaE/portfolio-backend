@@ -1,4 +1,4 @@
-export default interface JobOption {
+export  interface JobOption {
     ok: boolean;
     hits: JobHit[];
     facets: Record<string, Facet[]>;
@@ -34,3 +34,20 @@ export default interface JobOption {
     doc_count: number;
   }
   
+  //interface for data stored in postgres DB
+  export interface JobData {
+    job_count: number,
+    last_run: number
+  }
+
+  export type CheckLastRunResult = 
+  | { success: true; hoursSinceLastRun: number }
+  | { success: false; error?: unknown };
+
+  export type CheckJobCountResult = 
+  | { success: true; numberOfJobs: number }
+  | { success: false; error?: unknown };
+
+  export type CheckAPIRequestResult = 
+  | { success: true; data: number }
+  | { success: false; error?: unknown };
