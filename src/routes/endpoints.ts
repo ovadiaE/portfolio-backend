@@ -1,16 +1,20 @@
 import express from "express";
-import getJobCount from "../jobCount"
+import getJobCount from "../api/jobCount";
+import { createSeed } from "../api/particleSeed";
 
 const router = express.Router();
 
 router.get('/job-data', async (req, res) => {
   const count =  await getJobCount();
 
-  if(count.success) {
-    console.log(count.numberOfJobs)
+  if(!count.success) {
+    res.send(count);
+    return;
   }
-
-  res.send('hello world');
+  
+  const seed = createSeed(count.numberOfJobs);
+  
+  res.send(seed);
 });
 
 export default router;

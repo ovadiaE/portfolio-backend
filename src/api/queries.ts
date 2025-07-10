@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import {JobOption, CheckAPIRequestResult, CheckJobCountResult, CheckLastRunResult} from '../../models/types';
 import {checkQueryResult, errorString} from '../../config/error-handlers';
 
-
 dotenv.config();
 
 const API_URL = process.env.API_URL;
@@ -82,7 +81,6 @@ export async function getJobCountFromAPI():Promise<CheckAPIRequestResult> {
     }
   
   }
-
 
 export async function updateLastRun():Promise<boolean> { 
   
