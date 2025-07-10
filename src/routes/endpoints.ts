@@ -4,17 +4,29 @@ import { createSeed } from "../api/particleSeed";
 
 const router = express.Router();
 
-router.get('/job-data', async (req, res) => {
-  const count =  await getJobCount();
+router.get('/particle-seed', async (_req, res) => {
+  try {
+    const countResult = await getJobCount();
 
-  if(!count.success) {
-    res.send(count);
+    if (!countResult.success) {
+      res.status(500).json({ error: countResult.error });
+      
+      return;   
+    }
+
+    const seed = createSeed(countResult.numberOfJobs);
+   
+    res.json({ seed });
+    
+    return;
+ 
+  } catch (err) {
+    
+    console.error("Error in /particle-seed:", err);
+    
+    res.status(500).json({ error: "Internal server error" }); 
     return;
   }
-  
-  const seed = createSeed(count.numberOfJobs);
-  
-  res.send(seed);
 });
 
 export default router;
