@@ -1,6 +1,5 @@
 const HIGH = 1200;
 const MED = 1000;
-const LOW = 800;
 
 export function createSeed(jobCount: number): string {
 
