@@ -9,10 +9,10 @@ dotenv.config();
 const API_URL = process.env.API_URL;
 const API_KEY = process.env.API_JOBS_KEY;
 
-const SELECT_JOB_COUNT = `SELECT job_count FROM job_tracking `;
-const UPDATE_JOB_COUNT = `UPDATE job_tracking SET job_count = $1`;
-const UPDATE_LAST_RUN  = `UPDATE job_tracking SET last_run = $1`;
-const SELECT_ALL       = `SELECT * FROM job_tracking;`;
+const SELECT_JOB_COUNT = `SELECT count FROM data`;
+const UPDATE_JOB_COUNT = `UPDATE data SET count = $1`;
+const UPDATE_LAST_RUN  = `UPDATE data SET last_run = $1`;
+const SELECT_ALL       = `SELECT * FROM data;`;
 
 const defaultRequestPayload = {
     sort_by: 'published_at',
@@ -111,6 +111,7 @@ export async function checkLastRunDate ():Promise<CheckLastRunResult>{
     const data = await db.query( SELECT_ALL );
 
     if (!checkQueryResult (data) ) {
+      console.log(data);
       return { success: false, error: errorString('checkLastRunDate')};
     };
     
@@ -119,7 +120,7 @@ export async function checkLastRunDate ():Promise<CheckLastRunResult>{
 
     const timeDifference = (currentDate - lastRun);
     const differenceInHours = timeDifference / (1000 * 60 * 60); 
-
+    
     return { success: true, hoursSinceLastRun: differenceInHours };
  
   } 

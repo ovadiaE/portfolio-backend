@@ -14,9 +14,9 @@ router.get('/particle-seed', async (_req, res) => {
       return;   
     }
 
-    const seed = createSeed(countResult.numberOfJobs);
-   
-    res.json({ seed });
+    const animationSeed = createSeed(countResult.numberOfJobs);
+  
+    res.json({ animationSeed });
     
     return;
  
