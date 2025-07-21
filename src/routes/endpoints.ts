@@ -4,7 +4,7 @@ import { createSeed } from "../api/particleSeed";
 
 const router = express.Router();
 
-router.get('/particle-seed', async (_req, res) => {
+router.get('/job-range', async (_req, res) => {
   try {
     const countResult = await getJobCount();
 
