@@ -10,17 +10,23 @@ const app = express();
 const allowedOrigins = ['http://localhost:3001', 'https://ovi-landing-page.netlify.app/'];
 
 app.use(
+
+
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
+
+
+      origin:'https://ovi-landing-page.netlify.app/', 
+
+
+      methods: ["GET"],
+
+
+      allowedHeaders: 'Content-Type,Authorization',
+
+
+  }),
+
+
 );
 
 const port = process.env.PORT || 3000; 
