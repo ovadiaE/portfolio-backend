@@ -22,7 +22,7 @@ const getJobCount = async (): Promise<CheckJobCountResult> => {
     const hours = lastRun.hoursSinceLastRun;
 
     // CASE 1: Use DB value if it's recent
-    if (hours < HOURS_BEFORE_DATE_RESET) {
+    if (hours <= HOURS_BEFORE_DATE_RESET) {
       const count = await getJobCountFromDb();
 
       return count.success

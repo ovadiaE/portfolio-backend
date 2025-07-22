@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import routes from './routes/endpoints';
 import dotenv from 'dotenv';
 import cors from 'cors' ;
@@ -7,27 +7,15 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:3001', 'https://ovi-landing-page.netlify.app/'];
-
 app.use(
-
-
   cors({
-
-
-      origin:'https://ovi-landing-page.netlify.app/', 
-
-
-      methods: ["GET"],
-
-
-      allowedHeaders: 'Content-Type,Authorization',
-
-
+    origin:'http://localhost:3000', 
+    methods: ["GET"],
+    allowedHeaders: 'Content-Type,Authorization',
   }),
-
-
 );
+
+console.log('server starting')
 
 const port = process.env.PORT || 3000; 
 

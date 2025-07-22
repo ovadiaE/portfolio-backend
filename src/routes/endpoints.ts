@@ -22,7 +22,7 @@ router.get('/job-range', async (_req, res) => {
  
   } catch (err) {
     
-    console.error("Error in /particle-seed:", err);
+    console.error("Error in /job-range:", err);
     
     res.status(500).json({ error: "Internal server error" }); 
     return;
