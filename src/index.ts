@@ -22,8 +22,9 @@ const port = 3000;
 app.use('/', routes);
 
 try {
-  app.listen(3000, () => {console.log(`app listening on http://localhost:${port}`)});
-}
-catch(error) {
-  console.log(error);
+  app.listen(3000, '0.0.0.0', () => {
+    console.log('App listening on http://0.0.0.0:3000');
+  });
+} catch (error) {
+  console.error('Server failed to start:', error);
 }
