@@ -15,7 +15,6 @@ router.get('/job-range', async (_req, res) => {
     }
 
     const animationSeed = createSeed(countResult.numberOfJobs);
-    console.log('ran ')
     res.json({ animationSeed });
     
     return;

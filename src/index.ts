@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ['https://ovi-landing-page.netlify.app', 'http://localhost:3001'],
+    origin: ['https://ovi-landing-page.netlify.app/', 'http://localhost:3001'],
     methods: ['GET'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
