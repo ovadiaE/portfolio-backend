@@ -17,12 +17,12 @@ app.use(
 
 console.log('server starting');
 
-const port = 3001; 
+const port = 3000; 
 
 app.use('/', routes);
 
 try {
-  app.listen(3001, () => {console.log(`app listening on http://localhost:${port}`)});
+  app.listen(3000, () => {console.log(`app listening on http://localhost:${port}`)});
 }
 catch(error) {
   console.log(error);
