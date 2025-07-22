@@ -9,7 +9,7 @@ router.get('/job-range', async (_req, res) => {
     const countResult = await getJobCount();
 
     if (!countResult.success) {
-      res.status(500).json({ error: countResult.error, data: countResult });
+      res.status(500).json({ status: countResult.success, error: countResult.error, data: countResult.data});
       
       return;   
     }
