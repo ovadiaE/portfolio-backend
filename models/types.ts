@@ -42,7 +42,7 @@ export  interface JobOption {
 
   export type CheckLastRunResult = 
   | { success: true; hoursSinceLastRun: number }
-  | { success: false; error?: unknown };
+  | { success: false; error?: unknown, data?:unknown};
 
   export type CheckJobCountResult = 
   | { success: true; numberOfJobs: number }

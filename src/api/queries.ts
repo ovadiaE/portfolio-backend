@@ -111,8 +111,7 @@ export async function checkLastRunDate ():Promise<CheckLastRunResult>{
     const data = await db.query( SELECT_ALL );
 
     if (!checkQueryResult (data) ) {
-      console.log(data);
-      return { success: false, error: errorString('checkLastRunDate')};
+      return { success: false, error: errorString('checkLastRunDate'), data: data};
     };
     
     const lastRun = Number(data.rows[0].last_run);
