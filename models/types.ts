@@ -46,7 +46,7 @@ export  interface JobOption {
 
   export type CheckJobCountResult = 
   | { success: true; numberOfJobs: number }
-  | { success: false; error?: unknown };
+  | { success: false; error?: unknown, data?: unknown};
 
   export type CheckAPIRequestResult = 
   | { success: true; data: number }

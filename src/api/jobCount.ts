@@ -16,6 +16,7 @@ const getJobCount = async (): Promise<CheckJobCountResult> => {
       return {
         success: false,
         error: 'Failed to check time of last run in function: getJobCount',
+        data: lastRun
       };
     }
 
