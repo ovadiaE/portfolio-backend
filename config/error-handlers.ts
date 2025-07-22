@@ -8,7 +8,7 @@ export function handleUpdateJobCountError (result: QueryResult) {
 export function checkQueryResult (result: QueryResult) {
     
     if (result.rows.length === 0) {
-        return null;
+        return false;
     }   
     else {
         return true;
