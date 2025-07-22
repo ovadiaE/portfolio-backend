@@ -15,10 +15,15 @@ app.use(
   }),
 );
 
-console.log('server starting')
+console.log('server starting');
 
-const port = process.env.PORT || 3000; 
+const port = 3001; 
 
 app.use('/', routes);
 
-app.listen(3000, () => {console.log(`app listening on http://localhost:${port}`)});
+try {
+  app.listen(3001, () => {console.log(`app listening on http://localhost:${port}`)});
+}
+catch(error) {
+  console.log(error);
+}

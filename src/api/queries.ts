@@ -6,7 +6,7 @@ import {checkQueryResult, errorString} from '../../config/error-handlers';
 
 dotenv.config();
 
-const API_URL = process.env.API_URL;
+const API_URL = 'https://api.apijobs.dev/v1/job/search'
 const API_KEY = process.env.API_JOBS_KEY;
 
 const SELECT_JOB_COUNT = `SELECT count FROM data`;
@@ -31,7 +31,7 @@ export async function getJobCountFromAPI():Promise<CheckAPIRequestResult> {
       }
   
       const response = await axios.post<JobOption>(
-        API_URL || '',
+        API_URL,
         defaultRequestPayload,
         {
           headers: {
